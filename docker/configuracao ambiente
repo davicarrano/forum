@@ -1,14 +1,23 @@
 #criacao do postgres
-docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d --network=rede1 postgres
+	# criar dentro de uma rede própria
+		docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d --network=rede1 postgres
+	# acessar pelo iplocal
+		docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d postgres
 
 
 #criacao do pgadmin
-docker run -p 80:80  \-e 'PGADMIN_DEFAULT_EMAIL=davi@ufsj.edu.br' \-e 'PGADMIN_DEFAULT_PASSWORD=123456' -d --network=rede1 dpage/pgadmin4:latest
-
-
+	# criar dentro de uma rede própria
+		docker run -p 80:80  \-e 'PGADMIN_DEFAULT_EMAIL=davi@ufsj.edu.br' \-e 'PGADMIN_DEFAULT_PASSWORD=123456' -d --network=rede1 dpage/pgadmin4:latest
+	# acessar pelo iplocal
+		docker run -p 80:80  \-e 'PGADMIN_DEFAULT_EMAIL=davi@ufsj.edu.br' \-e 'PGADMIN_DEFAULT_PASSWORD=123456' -d dpage/pgadmin4:latest
 conectar usando o host postgres01 e a porta 5432
 
 
 #criacao do apache
-docker run -it -p 8888:8080 -v "/home/davi/Desenvolvimento/app:/usr/local/tomcat/webapps" --network=rede1 tomcat
+	# criar dentro de uma rede própria
+		docker run -it -p 8888:8080 -v "/home/davi/Desenvolvimento/app:/usr/local/tomcat/webapps" --network=rede1 tomcat
+	# acessar pelo iplocal
+		docker run -it -p 8888:8080 -v "D:\estudos\app:/usr/local/tomcat/webapps" tomcat
+		docker run -d -p  8888:8080 -v "D:\estudos\app:/usr/local/tomcat/webapps"  tomcat
+
 

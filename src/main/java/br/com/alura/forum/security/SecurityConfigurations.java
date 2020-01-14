@@ -31,6 +31,8 @@ public class SecurityConfigurations  extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 					.antMatchers(HttpMethod.GET, "/topicos").permitAll()
 					.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
+					.antMatchers(HttpMethod.POST, "/topicos/*").permitAll()
+					.antMatchers(HttpMethod.DELETE, "/topicos/*").permitAll()
 					.antMatchers(HttpMethod.POST, "/auth").permitAll()
 					.anyRequest().authenticated()
 					.and().csrf().disable()

@@ -82,6 +82,7 @@ public class TopicosController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CacheEvict(value="listaTopicosCache", allEntries = true)
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form) {
@@ -94,6 +95,7 @@ public class TopicosController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CacheEvict(value="listaTopicosCache", allEntries = true)
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> remover(@PathVariable Long id) {
