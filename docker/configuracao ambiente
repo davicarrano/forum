@@ -3,6 +3,9 @@
 		docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d --network=rede1 postgres
 	# acessar pelo iplocal
 		docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d postgres
+	# criar o banco com armazenamento local
+		docker run --name postgres01 -p 5432:5432 -e POSTGRES_PASSWORD=123456 -d -v /home/davi/Desenvolvimento/bd:/var/lib/postgresql/data postgres
+
 
 
 #criacao do pgadmin
